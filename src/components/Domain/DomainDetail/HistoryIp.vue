@@ -42,7 +42,7 @@ export default {
   methods: {
     handleClick (row) {
       //   console.log(row)
-      this.$router.push({ path: `/IPDetail/${row.ip}` })
+      this.$router.push({ path: `/Assetdetail/${row.ip}` })
     },
     async getHistoryIPData () {
       const { data: res } = await this.$http.get('domain/history_ip', {

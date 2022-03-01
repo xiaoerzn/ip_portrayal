@@ -11,55 +11,149 @@
     :asidewidth="asidewidth"
     @getFaterList="getAssetList()"
   >
-  <!-- left -->
+    <!-- left -->
     <template v-slot:aside>
-      <rank :category="'网关'" :path="'ip/top'" :rankrequest="{top_name:'gateway',top_number:'5'}" ></rank>
-      <rank :category="'端口'" :path="'ip/top'" :rankrequest="{top_name:'port',top_number:'5'}"></rank>
-      <rank :category="'自治域编号'" :path="'ip/top'" :rankrequest="{top_name:'asn',top_number:'5'}"></rank>
-      <rank :category="'设备'" :path="'ip/top'" :rankrequest="{top_name:'device',top_number:'5'}"></rank>
-      <rank :category="'协议类型'" :path="'ip/top'" :rankrequest="{top_name:'protocol_type',top_number:'5'}"></rank>
-      <rank :category="'操作系统'" :path="'ip/top'" :rankrequest="{top_name:'os',top_number:'5'}"></rank>
-      <rank :category="'组织机构'" :path="'ip/top'" :rankrequest="{top_name:'org',top_number:'5'}"></rank>
-      <rank :category="'服务提供商'" :path="'ip/top'" :rankrequest="{top_name:'isp',top_number:'5'}"></rank>
-      <rank :category="'中间件'" :path="'ip/top'" :rankrequest="{top_name:'middleware',top_number:'5'}"></rank>
-
+      <rank
+        :category="'网关'"
+        :path="'ip/top'"
+        :rankrequest="{ top_name: 'gateway', top_number: '5' }"
+      ></rank>
+      <rank
+        :category="'端口'"
+        :path="'ip/top'"
+        :rankrequest="{ top_name: 'port', top_number: '5' }"
+      ></rank>
+      <rank
+        :category="'自治域编号'"
+        :path="'ip/top'"
+        :rankrequest="{ top_name: 'asn', top_number: '5' }"
+      ></rank>
+      <rank
+        :category="'设备'"
+        :path="'ip/top'"
+        :rankrequest="{ top_name: 'device', top_number: '5' }"
+      ></rank>
+      <rank
+        :category="'协议类型'"
+        :path="'ip/top'"
+        :rankrequest="{ top_name: 'protocol_type', top_number: '5' }"
+      ></rank>
+      <rank
+        :category="'操作系统'"
+        :path="'ip/top'"
+        :rankrequest="{ top_name: 'os', top_number: '5' }"
+      ></rank>
+      <rank
+        :category="'组织机构'"
+        :path="'ip/top'"
+        :rankrequest="{ top_name: 'org', top_number: '5' }"
+      ></rank>
+      <rank
+        :category="'服务提供商'"
+        :path="'ip/top'"
+        :rankrequest="{ top_name: 'isp', top_number: '5' }"
+      ></rank>
+      <rank
+        :category="'中间件'"
+        :path="'ip/top'"
+        :rankrequest="{ top_name: 'middleware', top_number: '5' }"
+      ></rank>
     </template>
     <!-- main -->
     <template v-slot:main>
-      <el-card :body-style="{ padding: '20px 20px 10px 20px' }" v-for="item in AssetList" :key="item.index">
+      <el-card
+        :body-style="{ padding: '20px 20px 10px 20px' }"
+        v-for="item in AssetList"
+        :key="item.index"
+      >
         <el-row class="infohead">
-          <el-col :span="8" style="font-size: 18px; font-weight: 600">{{ item.ip }} &nbsp;<el-button type="text" icon="el-icon-view" @click="view_details(item.ip)" size="mini">查看详情</el-button></el-col>
+          <el-col :span="8" style="font-size: 18px; font-weight: 600"
+            >{{ item.ip }} &nbsp;<el-button
+              type="text"
+              icon="el-icon-view"
+              @click="view_details(item.ip)"
+              size="mini"
+              >查看详情</el-button
+            ></el-col
+          >
           <el-col :span="8">
-            <el-tag v-if="!!item.protocol_type">{{ item.protocol_type }}</el-tag>
+            <el-tag v-if="!!item.protocol_type">{{
+              item.protocol_type
+            }}</el-tag>
             &nbsp;
             <el-tag v-if="!!item.service_type">{{ item.service_type }}</el-tag>
           </el-col>
-          <el-col :span="8" style="text-align: right"><i class="iconfont iconshijian"></i>&nbsp; {{ item.date }}</el-col>
+          <el-col :span="8" style="text-align: right"
+            ><i class="iconfont iconshijian"></i>&nbsp; {{ item.date }}</el-col
+          >
         </el-row>
         <el-row>
           <el-col :span="8" class="infoleft">
-            <el-row> <img :src="`http://10.15.1.192:8000/static/${item.iso}.png`" />-{{ item.country }}-{{ item.province }} </el-row>
-            <el-row v-if="!!item.title"> <i class="el-icon-s-platform"></i> 网站标题 : {{ item.title }} </el-row>
-            <el-row v-if="!!item.org"> <i class="el-icon-mobile"></i> 证书持有机构 : {{ item.org }} </el-row>
-            <el-row v-if="!!item.device"> <i class="el-icon-cpu"></i> 设备名称 : {{ item.device }} </el-row>
-            <el-row v-if="!!item.os"> <i class="el-icon-receiving"></i> 操作系统 : {{ item.os }} </el-row>
-            <el-row v-if="!!item.isp"> <i class="el-icon-tickets"></i> 运营商 : {{ item.isp }} </el-row>
-            <el-row v-if="!!item.server"> <i class="el-icon-edit"></i> Server : {{ item.server }} </el-row>
+            <el-row>
+              <img :src="`http://10.15.1.192:8000/static/${item.iso}.png`" />-{{
+                item.country
+              }}-{{ item.province }}
+            </el-row>
+            <el-row v-if="!!item.title">
+              <i class="el-icon-s-platform"></i> 网站标题 : {{ item.title }}
+            </el-row>
+            <el-row v-if="!!item.org">
+              <i class="el-icon-mobile"></i> 证书持有机构 : {{ item.org }}
+            </el-row>
+            <el-row v-if="!!item.device">
+              <i class="el-icon-cpu"></i> 设备名称 : {{ item.device }}
+            </el-row>
+            <el-row v-if="!!item.os">
+              <i class="el-icon-receiving"></i> 操作系统 : {{ item.os }}
+            </el-row>
+            <el-row v-if="!!item.isp">
+              <i class="el-icon-tickets"></i> 运营商 : {{ item.isp }}
+            </el-row>
+            <el-row v-if="!!item.server">
+              <i class="el-icon-edit"></i> Server : {{ item.server }}
+            </el-row>
             <!-- <el-row v-if="!!item.date"> <i class="el-icon-edit"></i> 探测时间 : {{ item.date }} </el-row> -->
-            <el-row v-if="!!item.bugdict" style="overflow:visible">
+            <el-row v-if="!!item.bugdict" style="overflow: visible">
               <i class="el-icon-edit"></i> 漏洞:
-              <el-badge :value="`${item.bugdict.highrisk}`" class="item" type="danger"> 高 </el-badge>
-              <el-badge :value="`${item.bugdict.mediumrisk}`" class="item" type="warning"> 中 </el-badge>
-              <el-badge :value="`${item.bugdict.lowrisk}`" class="item" type="primary"> 低 </el-badge>
+              <el-badge
+                :value="`${item.bugdict.highrisk}`"
+                class="item"
+                type="danger"
+              >
+                高
+              </el-badge>
+              <el-badge
+                :value="`${item.bugdict.mediumrisk}`"
+                class="item"
+                type="warning"
+              >
+                中
+              </el-badge>
+              <el-badge
+                :value="`${item.bugdict.lowrisk}`"
+                class="item"
+                type="primary"
+              >
+                低
+              </el-badge>
             </el-row>
             <el-row>
               <!-- <el-tooltip effect="dark" content="查看详情" placement="top">
                 <el-avatar shape="square" :size="20" icon="el-icon-search" @click.native="view_details(item.ip)"></el-avatar>
               </el-tooltip> -->
               <el-tooltip effect="dark" content="证书内容" placement="top">
-                <el-avatar shape="square" :size="20" icon="el-icon-rank" @click.native="open(item.ssl)"></el-avatar>
+                <el-avatar
+                  shape="square"
+                  :size="20"
+                  icon="el-icon-rank"
+                  @click.native="open(item.ssl)"
+                ></el-avatar>
               </el-tooltip>
-              <el-avatar shape="square" :size="20" icon="el-icon-data-board"></el-avatar>
+              <el-avatar
+                shape="square"
+                :size="20"
+                icon="el-icon-data-board"
+              ></el-avatar>
             </el-row>
           </el-col>
           <!-- right -->
@@ -73,72 +167,81 @@
 </template>
 
 <script>
-import search from '../common/search.vue'
-import rank from '../common/rank.vue'
+import search from "../common/search.vue";
+import rank from "../common/rank.vue";
 export default {
-  data () {
+  data() {
     return {
-      asidewidth: '353px',
+      asidewidth: "353px",
       dialogVisible: false,
-      searchtips: '支持资产、国家、地区搜索，搜索格式为:domain:605.tw;country:CN;region:LA',
-      SystemName: '资产',
-      link: '/IPlocating1',
+      searchtips:
+        "支持资产、国家、地区搜索，搜索格式为:domain:605.tw;country:CN;region:LA",
+      SystemName: "资产",
+      link: "/IPlocating1",
       total: 100,
-      query_time: '',
+      query_time: "",
       currentPage: 1,
       queryInfo: {
-        query: '',
+        query: "",
         eachpage: 10,
-        pagenum: 1
+        pagenum: 1,
       },
       loading: true,
       AssetList: [],
-      resultflag: true
-    }
+      resultflag: true,
+    };
   },
   components: {
     search,
-    rank
+    rank,
   },
-  created () {
-    this.getAssetList()
+  created() {
+    this.getAssetList();
+  },
+  mounted(){
+    // console.log(this.CommonFunction);
   },
   methods: {
-    async getAssetList () {
-      this.loading = true
-      const { data: res } = await this.$http.get('/ip/page', {
-        params: this.queryInfo
-      })
+    async getAssetList() {
+      this.loading = true;
+      const { data: res } = await this.$http.get("/ip/page", {
+        params: this.queryInfo,
+      });
 
       if (res.meta.status !== 200) {
-        return this.$message.error('获取默认列表失败！')
+        return this.$message.error("获取默认列表失败！");
       }
       // console.log(res)
       if (res.data.length != 0) {
-        this.AssetList = res.data
-        this.total = res.datanum
-        this.query_time = res.Query_time
-        this.resultflag = true
-        document.querySelector('.body').parentNode.scrollTop = 0
-        this.loading = false
+        this.AssetList = res.data;
+        this.total = res.datanum;
+        this.query_time = res.Query_time;
+        this.resultflag = true;
+        document.querySelector(".body").parentNode.scrollTop = 0;
+        this.loading = false;
       } else {
-        this.total = 0
-        this.query_time = 0
-        this.resultflag = false
-        this.loading = false
+        this.total = 0;
+        this.query_time = 0;
+        this.resultflag = false;
+        this.loading = false;
       }
     },
-    view_details (ip) {
-      // console.log('111')
-      this.$router.push({ path: `/Assetdetail/${ip}` })
+    view_details(ip) {
+      this.CommonFunction.OpenNewBlank(ip,'Assetdetail',this)
+    //   const { href } = this.$router.resolve({
+    //     path: `/AssetDetail/${ip}`,
+    //   });
+    //   window.open(href, "_blank");
+    //   // console.log('111')
+    //   // this.$router.push({ path: `/Assetdetail/${ip}` })
     },
-    open (ssl) {
-      this.$alert(`${ssl}`, '证书详情', {
-        confirmButtonText: '确定'
-      })
-    }
-  }
-}
+    open(ssl) {
+      this.$alert(`${ssl}`, "证书详情", {
+        confirmButtonText: "确定",
+      });
+    },
+  },
+};
 </script>
 
 <style lang="less" scoped>
@@ -172,7 +275,7 @@ export default {
 pre {
   white-space: pre-wrap;
   word-wrap: break-word;
-  padding:0px 12px;
+  padding: 0px 12px;
   width: 829px;
   margin-right: calc(100% - 100vw);
 }
@@ -183,9 +286,8 @@ pre {
   min-height: 17px;
   max-height: 207px;
   overflow: hidden;
-
 }
-.main_right:hover{
+.main_right:hover {
   overflow: auto;
 }
 
@@ -199,5 +301,6 @@ pre {
 </style>
 <style>
 .el-tooltip__popper.is-dark {
-opacity: 0.8;
-}</style>
+  opacity: 0.8;
+}
+</style>

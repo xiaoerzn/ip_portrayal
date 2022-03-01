@@ -1,7 +1,7 @@
 <template>
-  <el-card class="box-card" :body-style="{ margin: '28px 34px', padding:'0' }">
+  <el-card class="box-card" :body-style="{ margin: '28px 34px', padding:'0' }" >
     <div slot="header" class="clearfix">
-      <span style="font-size: 28px;color: rgba(0,0,0,.85);font-weight: 600;">{{ ipBaseInfo.ip }}</span>
+      <span style="font-size: 28px;color: rgba(0,0,0,.85);font-weight: 600;">{{ this.$route.params.id }}</span>
       <el-button type="primary" size="mini" style="float:right">查看源数据</el-button>
     </div>
     <div>

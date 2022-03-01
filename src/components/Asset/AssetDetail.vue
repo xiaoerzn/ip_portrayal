@@ -2,7 +2,7 @@
   <div class="body">
     <el-breadcrumb separator-class="el-icon-arrow-right">
       <el-breadcrumb-item :to="{ path: '/Home' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item>自治域系统</el-breadcrumb-item>
+      <el-breadcrumb-item>资产系统</el-breadcrumb-item>
       <el-breadcrumb-item :to="{ path: '/IPlocating1' }">Asset查询</el-breadcrumb-item>
       <el-breadcrumb-item>IP{{ this.$route.params.id }}详情</el-breadcrumb-item>
     </el-breadcrumb>
@@ -44,7 +44,8 @@ export default {
     BaseInfo,
     AssetPortServe
   },
-  methods: {}
+  methods: {},
+
 }
 </script>
 

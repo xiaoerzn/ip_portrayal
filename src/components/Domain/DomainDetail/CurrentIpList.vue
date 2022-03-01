@@ -40,7 +40,7 @@ export default {
   methods: {
     handleClick (row) {
       //   console.log(row)
-      this.$router.push({ path: `/IPDetail/${row.ip}` })
+      this.$router.push({ path: `/Assetdetail/${row.ip}` })
     },
     async getCurrentIPData () {
       const { data: res } = await this.$http.get('domain/current_ip', {

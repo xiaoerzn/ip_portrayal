@@ -31,7 +31,8 @@ export default {
       // console.log(res)
     },
     handleClick (item) {
-      this.$router.push({ path: `/DomainDetail/${item}` })
+      this.CommonFunction.OpenNewBlank(item,'DomainDetail',this)
+      // this.$router.push({ path: `/DomainDetail/${item}` })
     }
   }
 }

@@ -193,6 +193,7 @@ export default {
     },
     view_details (DomainName) {
       // console.log('111')
+ 
       this.$router.push({ path: `/DomainDetail/${DomainName}` })
     },
     handleClick (row) {

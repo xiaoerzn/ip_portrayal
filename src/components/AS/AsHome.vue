@@ -353,7 +353,8 @@ export default {
     },
     view_details (asn) {
       // console.log('111')
-      this.$router.push({ path: `/AsDetail/${asn}` })
+      this.CommonFunction.OpenNewBlank(asn,'AsDetail',this)
+      // this.$router.push({ path: `/AsDetail/${asn}` })
     },
 
     open_info () {

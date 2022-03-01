@@ -184,12 +184,9 @@ export default {
       })
     },
     view_details (DomainName) {
+      this.CommonFunction.OpenNewBlank(DomainName,'DomainDetail',this)
       // console.log('111')
       // this.$router.push({ path: `/DomainDetail/${DomainName}` })
-      const { href } = this.$router.resolve({
-        path: `/DomainDetail/${DomainName}`
-      })
-      window.open(href, '_blank')
     },
     handleSizeChange (newSize) {
       // console.log(newSize)
