@@ -27,12 +27,16 @@
         </el-tab-pane>
       </el-tabs>
     </el-card>
+    <AssetTag></AssetTag>
+    <AssetBug></AssetBug>
   </div>
 </template>
 
 <script>
 import BaseInfo from './AssetDetails/AssetBaseInfo.vue'
 import AssetPortServe from './AssetDetails/AssetPortServe.vue'
+import AssetTag from './AssetDetails/AssetTag.vue'
+import AssetBug from './AssetDetails/AssetBug.vue'
 
 export default {
   data () {
@@ -42,7 +46,10 @@ export default {
   },
   components: {
     BaseInfo,
-    AssetPortServe
+    AssetPortServe, 
+    AssetTag,
+    AssetBug
+
   },
   methods: {},
 
