@@ -13,7 +13,13 @@ import "./assets/css/global.css";
 import * as echarts from "echarts";
 
 import axios from "axios";
+
+import CommonFunction from "./common.js"
+Vue.prototype.CommonFunction=CommonFunction
+
 Vue.prototype.$echarts = echarts;
+Vue.prototype.$http = axios;
+
 // 配置请求的根路径
 // axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 axios.defaults.baseURL = "http://10.15.1.192:8000/apis";
@@ -31,13 +37,12 @@ axios.interceptors.request.use((config) => {
 //   NProgress.done()
 //   return config
 // })
-Vue.prototype.$http = axios;
 
 Vue.config.productionTip = false;
-
 // Vue.component('tree-table', TreeTable)
 // 将富文本编辑器，注册为全局可用的组件
 // Vue.use(VueQuillEditor)
+
 
 Vue.use(BaiduMap, {
   ak: "HcOsUXOCYNGGuuayQnGXK7EG38pEglSA",
