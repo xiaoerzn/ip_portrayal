@@ -2,18 +2,18 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 // import Login from './components/Login.vue'
-const Login = () => import( /* webpackChunkName: "login_home_welcome" */ './components/Login.vue')
+const Login = () => import(  './components/Login.vue')
 // import Home from './components/Home.vue'
-const Home = () => import( /* webpackChunkName: "login_home_welcome" */ './components/Home.vue')
+const Home = () => import(  './components/Home.vue')
 // import Welcome from './components/Welcome.vue'
-const Welcome = () => import( /* webpackChunkName: "login_home_welcome" */ './components/Welcome.vue')
-const AsHome = () => import( /* webpackChunkName: "login_home_welcome" */ './components/AS/AsHome.vue')
-const AsDetail = () => import( /* webpackChunkName: "login_home_welcome" */ './components/AS/AsDetail.vue')
-const DomainHome = () => import( /* webpackChunkName: "login_home_welcome" */ './components/Domain/DomainHome.vue')
-const DomainDetail = () => import( /* webpackChunkName: "login_home_welcome" */ './components/Domain/DomainDetail_v3.vue')
-const AssetHome = () => import( /* webpackChunkName: "login_home_welcome" */ './components/Asset/AssetHome_v2.vue')
-const AssetDetail = () => import( /* webpackChunkName: "login_home_welcome" */ './components/Asset/AssetDetail.vue')
-const IPdetail = () => import( /* webpackChunkName: "login_home_welcome" */ './components/IP/IPDetail.vue')
+const Welcome = () => import(  './components/Welcome.vue')
+const AsHome = () => import(  './components/AS/AsHome.vue')
+const AsDetail = () => import(  './components/AS/AsDetail.vue')
+const DomainHome = () => import( './components/Domain/DomainHome.vue')
+const DomainDetail = () => import( './components/Domain/DomainDetail_v3.vue')
+const AssetHome = () => import( './components/Asset/AssetHome_v2.vue')
+const AssetDetail = () => import(  './components/Asset/AssetDetail.vue')
+const IPdetail = () => import(  './components/IP/IPDetail.vue')
 
 Vue.use(Router)
 
