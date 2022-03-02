@@ -239,16 +239,16 @@ export default {
      * @param params
      */
     toggleShowNodes (chart, params) {
-      // console.log("toggle")
+      // console.log(params)
       var open = !!params.data.open
       var options = chart.getOption()
+      // console.log(options)
       var seriesIndex = params.seriesIndex
       var srcLinkName = params.name // 节点名字
       var serieLinks = options.series[seriesIndex].links // option 的links
       var serieData = options.series[seriesIndex].data // option 的data
       var serieDataMap = new Map()
       var serieLinkArr = [] //
-      // console.log("open"+open)
       // 当前根节点是展开的，那么就需要关闭所有的根节点
       if (open) {
         // 递归找到所有的link节点的target的值
@@ -283,8 +283,7 @@ export default {
           // console.log(serieData)
           // console.log(serieDataMap)
           // console.log(serieLinkArr)
-          serieDataMap.has(serieDataMap[1])
-          var s = serieDataMap.has(serieLinkArr[1])
+
           // console.log("s="+s)
           for (var j = 0; j < serieLinkArr.length; j++) {
             // console.log(serieLinkArr[0])
