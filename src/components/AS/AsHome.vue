@@ -17,9 +17,6 @@
         <el-button class="btn_help" type="text" @click="dialogVisible = true"> <i class="el-icon-question"></i>帮助 </el-button>
         <el-dialog title="搜索说明" :visible.sync="dialogVisible">
           <span class="searchtips">支持ASN、国家、地区搜索，搜索格式为：asn:6556;country:CN;region:LA</span>
-          <span slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="dialogVisible = false" >确 定</el-button>
-          </span>
         </el-dialog>
       </el-col>
     </el-row>
@@ -145,7 +142,6 @@ export default {
     handleCommand (command) {
       this.$message('click on item ' + command)
     },
-
     // 获取默认AS列表
     async getASList () {
       this.loading = true
