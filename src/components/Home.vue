@@ -104,7 +104,6 @@ export default {
   //   console.log(this.$refs)
   // },
   methods: {
-
     logout () {
       window.sessionStorage.clear()
       this.$router.push('/login')
