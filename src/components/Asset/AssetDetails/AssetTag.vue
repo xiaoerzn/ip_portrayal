@@ -1,5 +1,7 @@
 <template>
-    <el-descriptions  title="标签分类" :column="1"  border>
+<div>
+  <h4><i class="el-icon-s-management"></i>&nbsp;标签分类</h4>
+    <el-descriptions :column="1"  border>
     <el-descriptions-item  label="业务/产品" label-class-name="my-label" content-class-name="my-content">
         <span v-if="TagInfo.model&&!TagInfo.model[0]">--</span>
         <el-tag v-else size="small" v-for="item in TagInfo.model" :key="item.index">{{item}}</el-tag>
@@ -29,6 +31,8 @@
       <el-tag v-else size="small" v-for="item in TagInfo.other" :key="item.index">{{item}}</el-tag>
     </el-descriptions-item>
   </el-descriptions>
+</div>
+
 </template>
 
 <script>
