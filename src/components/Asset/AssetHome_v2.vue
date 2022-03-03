@@ -97,7 +97,7 @@
             <el-row v-if="!!item.title">
               <i class="el-icon-s-platform"></i> 网站标题 : {{ item.title }}
             </el-row>
-            <el-row v-if="!!item.org">
+            <el-row v-if="!!item.org" :title="item.org">
               <i class="el-icon-mobile"></i> 证书持有机构 : {{ item.org }}
             </el-row>
             <el-row v-if="!!item.device">
