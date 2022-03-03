@@ -175,7 +175,7 @@ export default {
       asidewidth: "353px",
       dialogVisible: false,
       searchtips:
-        "支持资产、国家、地区搜索，搜索格式为:domain:605.tw;country:CN;region:LA",
+        "支持资产、国家、地区搜索，搜索格式为:ip:203.66.143.165;country:CN;region:LA",
       SystemName: "资产",
       link: "/IPlocating1",
       total: 100,
@@ -198,7 +198,7 @@ export default {
   created() {
     this.getAssetList();
   },
-  mounted(){
+  mounted() {
     // console.log(this.CommonFunction);
   },
   methods: {
@@ -227,13 +227,13 @@ export default {
       }
     },
     view_details(ip) {
-      this.CommonFunction.OpenNewBlank(ip,'Assetdetail',this)
-    //   const { href } = this.$router.resolve({
-    //     path: `/AssetDetail/${ip}`,
-    //   });
-    //   window.open(href, "_blank");
-    //   // console.log('111')
-    //   // this.$router.push({ path: `/Assetdetail/${ip}` })
+      this.CommonFunction.OpenNewBlank(ip, "Assetdetail", this);
+      //   const { href } = this.$router.resolve({
+      //     path: `/AssetDetail/${ip}`,
+      //   });
+      //   window.open(href, "_blank");
+      //   // console.log('111')
+      //   // this.$router.push({ path: `/Assetdetail/${ip}` })
     },
     open(ssl) {
       this.$alert(`${ssl}`, "证书详情", {
