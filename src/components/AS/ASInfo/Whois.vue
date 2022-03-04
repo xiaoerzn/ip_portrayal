@@ -34,7 +34,7 @@ export default {
 
 <style lang="less" scoped>
 #whoisInfo{
-  margin: 0;
+  margin: 0 0 0 10px;
 }
 pre {
     white-space: pre-wrap;

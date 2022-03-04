@@ -238,6 +238,7 @@ export default {
   margin: 20px 0 20px 0;
   padding: 0 10px;
   font-size: 20px;
+  color:rgba(0, 0, 0, 0.65)
 }
 .infotab {
   // display: inline-flex;
