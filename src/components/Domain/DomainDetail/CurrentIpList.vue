@@ -40,8 +40,8 @@ export default {
   methods: {
     handleClick (row) {
       //   console.log(row)
-      // this.CommonFunction.OpenNewBlank(row.ip,'Assetdetail',this)
-      this.$router.push({ path: `/Assetdetail/${row.ip}` })
+      this.CommonFunction.OpenNewBlank(row.ip,'Assetdetail',this)
+      // this.$router.push({ path: `/Assetdetail/${row.ip}` })
     },
     async getCurrentIPData () {
       const { data: res } = await this.$http.get('domain/current_ip', {
