@@ -17,10 +17,12 @@
         <el-button class="btn_help" type="text" @click="dialogVisible = true"> <i class="el-icon-question"></i>帮助 </el-button>
         <el-dialog title="搜索说明" :visible.sync="dialogVisible">
           <span class="searchtips">支持ASN、国家、地区搜索，搜索格式为：asn:6556;country:United States;</span>
+                    <span slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+          </span>
         </el-dialog>
       </el-col>
     </el-row>
-
     <div class="div_1">
       <!-- 统计 -->
       <span class="statistic"
