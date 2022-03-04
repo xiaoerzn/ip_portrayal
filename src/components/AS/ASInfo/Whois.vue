@@ -4,7 +4,6 @@
       <strong>WHOIS信息</strong>
     </div>
     <pre id="whoisInfo"></pre>
-
   </el-card>
 </template>
 
