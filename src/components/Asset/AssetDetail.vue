@@ -15,8 +15,8 @@
     <el-card>
       <el-tabs v-model="activeName">
         <el-tab-pane label="服务和漏洞" name="first">
-          <el-row>
-            <el-col :span="12">
+          <el-row :gutter="30">
+            <el-col :span="12" >
               <AssetTag></AssetTag>
               <AssetBug></AssetBug>
             </el-col>

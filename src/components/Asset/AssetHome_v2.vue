@@ -68,14 +68,15 @@
       >
         <el-row class="infohead">
           <el-col :span="8" style="font-size: 18px; font-weight: 600"
-            >{{ item.ip }} &nbsp;<el-button
+            >{{ item.ip }} &nbsp;
+            <el-button
               type="text"
               icon="el-icon-view"
               @click="view_details(item.ip)"
               size="mini"
               >查看详情</el-button
-            ></el-col
-          >
+            >
+          </el-col>
           <el-col :span="8">
             <el-tag v-if="!!item.protocol_type">{{
               item.protocol_type
@@ -84,8 +85,8 @@
             <el-tag v-if="!!item.service_type">{{ item.service_type }}</el-tag>
           </el-col>
           <el-col :span="8" style="text-align: right"
-            ><i class="iconfont iconshijian"></i>&nbsp; {{ item.date }}</el-col
-          >
+            ><i class="iconfont iconshijian"></i>&nbsp; {{ item.date }}
+            </el-col>
         </el-row>
         <el-row>
           <el-col :span="8" class="infoleft">
@@ -97,7 +98,7 @@
             <el-row v-if="!!item.title">
               <i class="el-icon-s-platform"></i> 网站标题 : {{ item.title }}
             </el-row>
-            <el-row v-if="!!item.org">
+            <el-row v-if="!!item.org" :title="item.org">
               <i class="el-icon-mobile"></i> 证书持有机构 : {{ item.org }}
             </el-row>
             <el-row v-if="!!item.device">
@@ -175,7 +176,7 @@ export default {
       asidewidth: "353px",
       dialogVisible: false,
       searchtips:
-        "支持资产、国家、地区搜索，搜索格式为:domain:605.tw;country:CN;region:LA",
+        "支持资产、国家、地区搜索，搜索格式为:ip:203.66.143.165;gateway:118.69.253.206;port:8080",
       SystemName: "资产",
       link: "/IPlocating1",
       total: 100,
@@ -198,7 +199,7 @@ export default {
   created() {
     this.getAssetList();
   },
-  mounted(){
+  mounted() {
     // console.log(this.CommonFunction);
   },
   methods: {
@@ -227,16 +228,16 @@ export default {
       }
     },
     view_details(ip) {
-      this.CommonFunction.OpenNewBlank(ip,'Assetdetail',this)
-    //   const { href } = this.$router.resolve({
-    //     path: `/AssetDetail/${ip}`,
-    //   });
-    //   window.open(href, "_blank");
-    //   // console.log('111')
-    //   // this.$router.push({ path: `/Assetdetail/${ip}` })
+      this.CommonFunction.OpenNewBlank(ip, "Assetdetail", this);
+      //   const { href } = this.$router.resolve({
+      //     path: `/AssetDetail/${ip}`,
+      //   });
+      //   window.open(href, "_blank");
+      //   // console.log('111')
+      //   // this.$router.push({ path: `/Assetdetail/${ip}` })
     },
     open(ssl) {
-      this.$alert(`${ssl}`, "证书详情", {
+      this.$alert('详情', "证书详情", {
         confirmButtonText: "确定",
       });
     },

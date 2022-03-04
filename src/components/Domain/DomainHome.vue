@@ -19,7 +19,6 @@
             <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
           </span>
         </el-dialog>
-        <el-button @click="test">确定</el-button>
       </el-col>
     </el-row>
     <div class="div_1">

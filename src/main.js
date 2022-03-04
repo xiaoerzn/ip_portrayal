@@ -22,7 +22,7 @@ Vue.prototype.$http = axios;
 axios.defaults.baseURL = "http://10.15.1.192:8000/apis";
 axios.interceptors.request.use((config) => {
   // 将token保存到authorization中
-  config.headers.Authorization = window.sessionStorage.getItem("token");
+  config.headers.Authorization = window.localStorage.getItem("token");
   // 在最后必须 return config
   return config;
 });

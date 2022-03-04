@@ -104,9 +104,9 @@ export default {
   //   console.log(this.$refs)
   // },
   methods: {
-
     logout () {
-      window.sessionStorage.clear()
+      // window.localStorage.clear()
+      window.localStorage.removeItem('token')
       this.$router.push('/login')
     },
     // 获取所有的菜单

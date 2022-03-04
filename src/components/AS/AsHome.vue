@@ -16,10 +16,7 @@
       <el-col :span="7">
         <el-button class="btn_help" type="text" @click="dialogVisible = true"> <i class="el-icon-question"></i>帮助 </el-button>
         <el-dialog title="搜索说明" :visible.sync="dialogVisible">
-          <span class="searchtips">支持ASN、国家、地区搜索，搜索格式为：asn:6556;country:CN;region:LA</span>
-          <span slot="footer" class="dialog-footer">
-            <el-button type="primary" @click="dialogVisible = false" >确 定</el-button>
-          </span>
+          <span class="searchtips">支持ASN、国家、地区搜索，搜索格式为：asn:6556;country:United States;</span>
         </el-dialog>
       </el-col>
     </el-row>
@@ -78,7 +75,7 @@
           <el-col :span="2" style="text-align: left; font-weight: bold">ASN {{ item.asn }}</el-col>
           <el-col :span="4" style="text-align: left"><el-button type="text" icon="el-icon-view" @click="view_details(item.asn)" size="mini">查看详情</el-button></el-col>
           <el-col :span="6" style="text-align: left; text-overflow: ellipsis; white-space: nowrap; overflow: hidden">{{ item.as_name }}</el-col>
-          <el-col :span="8" style="text-align: left"> {{ item.country }}-{{ item.city }}&nbsp;&nbsp;<img :src="`http://10.15.1.192:8000/static/${item.country}.png`" /></el-col>
+          <el-col :span="8" style="text-align: left"> {{ item.country }}-{{ item.city }}&nbsp;&nbsp;<img :src="`http://10.15.1.192:8000/static/${item.iso}.png`" /></el-col>
           <el-col :span="4"><i class="iconfont iconshijian"></i>&nbsp; {{ item.last_seen }}</el-col>
         </el-row>
       </div>
@@ -123,7 +120,6 @@ export default {
   data () {
     return {
       loading: true,
-
       // 获取列表的参数对象
       queryInfo: {
         query: '',
@@ -136,190 +132,6 @@ export default {
       query_time: '',
       radio: 2,
       dialogVisible: false,
-
-      HomeData: [
-        {
-          id: '1',
-          asn: '3358',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '2',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        },
-        {
-          id: '2',
-          asn: '3357',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '1',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        },
-        {
-          id: '3',
-          asn: '3356',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '0',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        },
-        {
-          id: '4',
-          asn: '3361',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '0',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        },
-        {
-          id: '5',
-          asn: '3363',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '1',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        },
-        {
-          id: '6',
-          asn: '3362',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '2',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        },
-        {
-          id: '7',
-          asn: '3363',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '0',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        },
-
-        {
-          id: '8',
-          asn: '3364',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '1',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        },
-        {
-          id: '9',
-          asn: '3365',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '0',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        },
-        {
-          id: '10',
-          asn: '3366',
-          as_name: 'AIRGAPPED',
-          as_org: 'Level 3 Parent, LLC',
-          country: 'United State',
-          level: '3',
-          ip_type: '2',
-          source: 'arin',
-          ipv4_count: '30844344',
-          city: '洛杉矶',
-          ipv6_count: '163496265216',
-          prefix_count: '718574',
-          weight: '3',
-          asns: '89',
-          first_seen: '2021-08-08 20:45:55 ',
-          last_seen: '2021-08-18 20:45:55'
-        }
-      ]
     }
   },
   created () {
@@ -330,7 +142,6 @@ export default {
     handleCommand (command) {
       this.$message('click on item ' + command)
     },
-
     // 获取默认AS列表
     async getASList () {
       this.loading = true

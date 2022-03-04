@@ -412,8 +412,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-table .warning-row {
-  background: #fff3f5;
+/deep/ .warning-row {
+  background:  #e6effb;
 }
 /* .el-table {
   font-size: 13px !important;
