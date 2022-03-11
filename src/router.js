@@ -14,6 +14,7 @@ const DomainDetail = () => import( './components/Domain/DomainDetail_v3.vue')
 const AssetHome = () => import( './components/Asset/AssetHome_v2.vue')
 const AssetDetail = () => import(  './components/Asset/AssetDetail.vue')
 const IPdetail = () => import(  './components/IP/IPDetail.vue')
+const MapHome = () => import(  './components/WholeMap/MapHome.vue')
 
 Vue.use(Router)
 
@@ -27,6 +28,13 @@ const router = new Router({
       component: Login,
       meta: {
         title: '用户登录'
+      }
+    },
+    {
+      path: '/dark1',
+      component: MapHome,
+      meta: {
+        title: '地图'
       }
     },
     {
