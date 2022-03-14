@@ -91,7 +91,7 @@ export default {
       if (res.meta.status !== 200) {
         return this.$message.error('获取默认列表失败！')
       }
-      // console.log(res)
+      console.log(res)
       this.ipBaseInfo = res.data
     }
   }
