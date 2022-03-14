@@ -54,16 +54,10 @@
       <!-- 导出 -->
       <span class="export">
         <i class="el-icon-info" style="color: #409eff" @click="open_info"></i>
-        <!-- <el-button type="primary" size="mini" style="padding: 4px 10px; margin: 0 2px" plain>导出</el-button>&nbsp;
-        <el-radio-group v-model="radio">
-          <el-radio :label="1">json</el-radio>
-          <el-radio :label="2">csv</el-radio>
-          <el-radio :label="3">xml</el-radio>
-        </el-radio-group> -->
-        <el-dropdown>
+        <el-dropdown @command="Download">
           <span class="el-dropdown-link"> 导出文件<i class="el-icon-arrow-down el-icon--right"></i> </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="json">json</el-dropdown-item>
+            <el-dropdown-item command="json" >json</el-dropdown-item>
             <el-dropdown-item command="csv">csv</el-dropdown-item>
             <el-dropdown-item command="xml">xml</el-dropdown-item>
           </el-dropdown-menu>
@@ -169,19 +163,16 @@ export default {
       this.CommonFunction.OpenNewBlank(asn,'AsDetail',this)
       // this.$router.push({ path: `/AsDetail/${asn}` })
     },
-
+    Download(command){
+      this.CommonFunction.DownloadFile('http://10.15.1.192:8000/api/ip/down',command)
+    },
     open_info () {
       const h = this.$createElement
-
       this.$notify({
         title: '导出帮助',
-        message: h('i', { style: 'color: teal' }, '点击导出，导出当前查询条件下的所有结果到本地，文件命名格式为： EXP-AS-RES-yyyMMddhhmmss.XXX'),
-        duration: 2000
+        message: h('i', { style: 'color: teal;white-space:normal' }, '点击导出，导出当前查询条件下的所有结果到本地，文件命名格式为： EXP-AS-RES-yyyMMddhhmmss.XXX'),
+        duration: 0
       })
-    },
-    search () {
-      // this.$router.push({path:'detail' ,query:{condition:this.query}})
-      // this.query=''
     },
     handleSizeChange (newSize) {
       // console.log(newSize)
