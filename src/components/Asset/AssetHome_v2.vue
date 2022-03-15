@@ -9,16 +9,12 @@
     :searchtips="searchtips"
     :resultflag="resultflag"
     :asidewidth="asidewidth"
+    :category="'ip'"
     @getFaterList="getAssetList()"
   >
     <!-- left  排名-->
     
     <template v-slot:aside>
-      <rank
-        :category="'国家'"
-        :path="'ip/top'"
-        :rankrequest="{ top_name: 'gateway', top_number: '5' }"
-      ></rank>
       <rank 
         :category="'网关'"
         :path="'ip/top'"

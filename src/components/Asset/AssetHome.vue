@@ -28,7 +28,7 @@
       </span>
       <!-- 导出 -->
       <span class="export">
-          <Download :category="'ip'" :eachpagenum="this.queryInfo.eachpagenum" :pagenum="this.queryInfo.pagenum" :query="this.queryInfo.query"></Download>
+          
       </span>
     </div>
     <el-container>
