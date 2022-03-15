@@ -15,7 +15,7 @@
     <!-- left  排名-->
     
     <template v-slot:aside>
-      <rank 
+      <rank
         :category="'网关'"
         :path="'ip/top'"
         :rankrequest="{ top_name: 'gateway', top_number: '5' }"
