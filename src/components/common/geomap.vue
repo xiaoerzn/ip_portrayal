@@ -1,3 +1,8 @@
+<!--
+  地图组件，传入经纬度，展示百度地图定位
+  地图高度为360px
+-->
+
 <template>
   <baidu-map class="map" :center="{ lng: Number(lon), lat: Number(lat) }" :zoom="8" scrollWheelZoom>
     <bm-marker :position="{ lng: Number(lon), lat: Number(lat) }"> </bm-marker>

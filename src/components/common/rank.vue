@@ -1,3 +1,6 @@
+<!--
+  TOP排名组件，传入排名类别、排名接口路径、排名接口参数
+-->
 <template>
   <el-card class="boxcard" v-loading="rankloading" element-loading-text="拼命加载中">
     <div slot="header" class="clearfix">

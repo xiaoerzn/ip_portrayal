@@ -1,3 +1,19 @@
+<!--
+ 分系统搜索页的组件
+ 包括搜索框、搜索帮助、导出帮助、左侧区域插槽、main侧区域插槽、页码
+
+
+'SystemName',系统名称中文名 'link',面包屑路径
+'queryInfo',搜索信息 'total',统计数目 'query_time'搜索时长,
+'searchtips'搜索帮助, 'resultflag'结果状态, 'asidewidth'左侧宽度,
+'loading'loading状态,"category"系统名称中文名,
+
+提供一个方法，获取页面数据
+    getList () {
+      this.$emit('getFaterList')
+      //   <child @fatherMethod="fatherMethod"></child>
+    },
+-->
 <template>
   <div class="body" v-loading="loading" element-loading-text="拼命加载中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
     <!-- 面包屑 -->
@@ -116,7 +132,7 @@ export default {
       this.getList()
     },
     handleCommand () {
-      console.log('下载')
+      // console.log('下载')
     }
   }
 }

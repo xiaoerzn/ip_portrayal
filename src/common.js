@@ -63,7 +63,6 @@ var DownloadFile = function (downloadurl, filename) {
     a.click();
   };
   x.send();
-
 }
 
 

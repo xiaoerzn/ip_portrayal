@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  props: ["category", "pagenum","eachpagenum","query"],
+  props: ["category", "queryInfo"],
   methods: {
     open_info() {
       const h = this.$createElement;
@@ -35,11 +35,10 @@ export default {
     Download(command) {
       var date= new Date().Format("yyyy-MM-dd hh:mm:ss");
       this.CommonFunction.DownloadFile(
-        "http://10.15.1.192:8000/api/"+this.category+"/down?eachpage="+this.eachpage+"&pagenum="+this.pagenum+"&filetype="+command,
-        "EXP-RES" +this.category +this.query+"-"+ date
+        "http://10.15.1.192:8000/api/"+this.category+"/down?eachpage="+this.queryInfo.eachpage+"&pagenum="+this.queryInfo.pagenum+"&filetype="+command,
+        "EXP-RES-" +this.category +this.queryInfo.query+"-"+date+'.'+command
       );
-      
-    },
+},
   },
 };
 </script>
