@@ -7,7 +7,7 @@ const Login = () => import("./components/Login.vue");
 const Home = () => import("./components/Home.vue");
 // import Welcome from './components/Welcome.vue'
 const Welcome = () => import("./components/Welcome.vue");
-const AsHome = () => import("./components/AS/AsHome.vue");
+const AsHome = () => import("./components/AS/AsHome_v2.vue");
 const AsDetail = () => import("./components/AS/AsDetail.vue");
 const DomainHome = () => import("./components/Domain/DomainHome_v2.vue");
 const DomainDetail = () => import("./components/Domain/DomainDetail_v3.vue");
