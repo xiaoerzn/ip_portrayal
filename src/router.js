@@ -9,7 +9,7 @@ const Home = () => import("./components/Home.vue");
 const Welcome = () => import("./components/Welcome.vue");
 const AsHome = () => import("./components/AS/AsHome.vue");
 const AsDetail = () => import("./components/AS/AsDetail.vue");
-const DomainHome = () => import("./components/Domain/DomainHome.vue");
+const DomainHome = () => import("./components/Domain/DomainHome_v2.vue");
 const DomainDetail = () => import("./components/Domain/DomainDetail_v3.vue");
 const AssetHome = () => import("./components/Asset/AssetHome_v2.vue");
 const AssetDetail = () => import("./components/Asset/AssetDetail.vue");
