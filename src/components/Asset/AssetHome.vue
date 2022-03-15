@@ -28,15 +28,7 @@
       </span>
       <!-- 导出 -->
       <span class="export">
-        <i class="el-icon-info" style="color: #409eff" @click="open_info"></i>
-        <el-dropdown>
-          <span class="el-dropdown-link"> 导出文件<i class="el-icon-arrow-down el-icon--right"></i> </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command="json">一年</el-dropdown-item>
-            <el-dropdown-item command="csv">一月</el-dropdown-item>
-            <el-dropdown-item command="xml">一周</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+          <Download :category="'ip'" :eachpagenum="this.queryInfo.eachpagenum" :pagenum="this.queryInfo.pagenum" :query="this.queryInfo.query"></Download>
       </span>
     </div>
     <el-container>
@@ -98,6 +90,7 @@
 </template>
 
 <script>
+import Download from '../common/download.vue'
 import HomeLeft from './AssetHomeLeft.vue'
 export default {
   data () {
@@ -119,10 +112,8 @@ export default {
     }
   },
   components: {
-    HomeLeft
-  },
-  created () {
-    // this.getIPList()
+    HomeLeft,
+    Download
   },
   methods: {
     async getIPList () {
