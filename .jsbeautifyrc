@@ -1,0 +1,10 @@
+{
+    "indent_char": " ",
+    "indent_size": 0,
+    "eol": "\n",
+    "end_with_newline": false,
+    "indent_with_tabs": false,
+    "preserve_newlines": false,
+    "wrap_line_length": 200000,
+    "wrap_attributes":"auto"
+}
