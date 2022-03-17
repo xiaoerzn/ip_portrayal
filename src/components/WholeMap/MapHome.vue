@@ -1,25 +1,24 @@
 <template>
-  <el-row>
-    <el-col class="left"> </el-col>
-    <el-col class="mid">
-    111
-    </el-col>
-    <el-col class="right"> </el-col>
-  </el-row>
+
+
+      <MapPage></MapPage>
+
 </template>
 
 <script>
+import MapPage from "./MapPage.vue";
 export default {
+  components: {
+    MapPage,
+  },
   data() {
-    return {
-      
-    };
+    return {};
   },
   created() {},
-  methods: {
-
-  },
+  methods: {},
 };
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+
+</style>

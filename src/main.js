@@ -1,13 +1,15 @@
 import Vue from "vue";
 import router from "./router";
-import "./plugins/element.js";
+
 import App from "./App.vue"
 // 导入字体图标
 import "./assets/fonts/icon/iconfont.css";
 // 导入全局样式表
 import "./assets/css/global.css";
-
-
+// -----------------------------------------Element-ui------------------------------------
+import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+Vue.use(Element)
 
 // ----------------------------------------------------Echarts配置-----------------------------------------------
 import * as echarts from "echarts";

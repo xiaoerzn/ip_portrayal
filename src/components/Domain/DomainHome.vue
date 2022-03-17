@@ -90,6 +90,9 @@
 <script>
 import HomeLeft from './DomainHomeLeft.vue'
 export default {
+    components: {
+    HomeLeft
+  },
   data () {
     return {
       resultflag: true,
@@ -140,9 +143,7 @@ export default {
       ]
     }
   },
-  components: {
-    HomeLeft
-  },
+
   created () {
     this.getDomainList()
   },
