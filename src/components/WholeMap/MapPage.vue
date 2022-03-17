@@ -598,12 +598,15 @@ export default {
       var that=this
         // 点击函数
         // console.log(params)
-        console.log(that.jsonMap)
-        this.value = params.name;
-        if(that.jsonMap.has(this.value)){
+        // console.log(that.jsonMap)
+       
+        if(params.name in that.jsonMap){
+          // console.log("可以")
+           this.value = params.name;
           this.myChart.setOption(option, true);
+        }else{
+          // console.log("不可以")
         }
-        
       });
     },
   },
