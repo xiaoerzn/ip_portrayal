@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       value: "world",
+      mapArr:["world"],
       myChart: null,
       //   注册地图json映射
       jsonMap: {
@@ -552,7 +553,7 @@ export default {
         tooltip: {}, // 鼠标移到图里面的浮动提示框
         visualMap: {
           // max: 110,
-          calculable: true,//是否显示拖拽用的手柄
+          calculable: true, //是否显示拖拽用的手柄
           inRange: {
             color: [
               "#313695",
@@ -572,8 +573,9 @@ export default {
         series: [
           {
             type: "map",
-            map: area,//下拉框选择的值传过来的
-            data://给visualMap提供值
+            map: area, //下拉框选择的值传过来的
+            //给visualMap提供值
+            data:
               area == "world"
                 ? this.worldData
                 : area == "中国"
@@ -589,22 +591,32 @@ export default {
                 : area == "江北区"
                 ? this.jiangbeiData
                 : [],
-            nameMap: area == "world" ? this.nameMap : {},//自定义地区名称映射，地图对应的名字
+            nameMap: area == "world" ? this.nameMap : {}, //自定义地区名称映射，地图对应的名字
           },
         ],
       };
       this.myChart.setOption(option, true);
-      this.myChart.on("click", (params) => {//地图下钻函数方式
-      var that=this
-        // 点击函数
-        // console.log(params)
-        // console.log(that.jsonMap)
-       
-        if(params.name in that.jsonMap){
+      this.myChart.on("click", (params) => { // 点击函数
+      var that = this;  
+      // console.log(params.name)
+      //  var mapArr =new Array()
+       console.log(that.mapArr)
+        if (params.name in that.jsonMap) {
+          // mapArr.push('world')
+          if (params.name in that.mapArr) {
+            that.mapArr.pop();
+            this.value = that.mapArr[that.mapArr.length-1];
+            this.myChart.setOption(option, true);
+          } else {
+            that.mapArr.push(params.name);
+            this.value = params.name;
+            this.myChart.setOption(option, true);
+          }
           // console.log("可以")
-           this.value = params.name;
+        } else {
+          // that.mapArr.pop()
+          this.value =that.mapArr[that.mapArr.length-2];
           this.myChart.setOption(option, true);
-        }else{
           // console.log("不可以")
         }
       });
