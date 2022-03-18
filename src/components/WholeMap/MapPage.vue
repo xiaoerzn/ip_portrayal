@@ -602,6 +602,7 @@ export default {
       //  var mapArr =new Array()
        console.log(that.mapArr)
         if (params.name in that.jsonMap) {
+          // --------------------------------------------------这里
           // mapArr.push('world')
           if (params.name in that.mapArr) {
             that.mapArr.pop();
