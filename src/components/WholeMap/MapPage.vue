@@ -1,9 +1,18 @@
 <template>
-  <div class="MapDiv">
+  <!-- <div class="MapDiv">
     <div id="map"></div>
+        <el-select v-model="value" placeholder="请选择">
+      <el-option v-for="(items,index) in mapData" :key="index" :label="items.name" :value="items.name"></el-option>
+    </el-select>
+  </div> -->
+  <div class="MapDiv">
+
+    <div id="map"></div>
+    <!-- 需要把这些写到map下面，absolute的时候才能在map上面 -->
     <el-select v-model="value" placeholder="请选择">
       <el-option v-for="(items,index) in mapData" :key="index" :label="items.name" :value="items.name"></el-option>
     </el-select>
+    <el-button v-if="mapArr.length>1" @click="back()">返回上一级</el-button>
   </div>
 </template>
 <script>
@@ -27,7 +36,7 @@ export default {
   data() {
     return {
       value: "world",
-      mapArr:["world"],
+      mapArr: ["world"],
       myChart: null,
       //   注册地图json映射
       jsonMap: {
@@ -546,10 +555,10 @@ export default {
   methods: {
     chinaConfigure(area) {
       this.myChart = this.$echarts.init(document.getElementById("map")); //这里是为了获得容器所在位置
-      window.onresize = this.myChart.resize;
+      // window.onresize = this.myChart.resize;
       let option = {
         // 进行相关配置
-        backgroundColor: "#02AFDB",
+        backgroundColor: "#0c184d",
         tooltip: {}, // 鼠标移到图里面的浮动提示框
         visualMap: {
           // max: 110,
@@ -596,38 +605,67 @@ export default {
         ],
       };
       this.myChart.setOption(option, true);
-      this.myChart.on("click", (params) => { // 点击函数
-      var that = this;  
-      // console.log(params.name)
-      //  var mapArr =new Array()
-       console.log(that.mapArr)
+      this.myChart.on("click", (params) => {
+        // 点击函数
+        var that = this;
         if (params.name in that.jsonMap) {
-          // --------------------------------------------------这里
-          // mapArr.push('world')
-          if (params.name in that.mapArr) {
-            that.mapArr.pop();
-            this.value = that.mapArr[that.mapArr.length-1];
-            this.myChart.setOption(option, true);
-          } else {
-            that.mapArr.push(params.name);
+          that.mapArr.push(params.name);
+          // console.log(that.mapArr)
+          if (that.mapArr.length == 3) {
+            this.$message({
+              message: "已是最后一级",
+              type: "warning",
+            });
+          }
             this.value = params.name;
             this.myChart.setOption(option, true);
-          }
           // console.log("可以")
         } else {
-          // that.mapArr.pop()
-          this.value =that.mapArr[that.mapArr.length-2];
-          this.myChart.setOption(option, true);
-          // console.log("不可以")
+          this.$message({
+            message: "暂无此地图数据",
+            type: "warning",
+          });
         }
       });
+      // this.myChart.on("click", (params) => {
+      //   // 点击函数
+      //   var that = this;
+      //   // console.log(params.name)
+      //   //  var mapArr =new Array()
+      //   console.log(that.mapArr);
+      //   if (params.name in that.jsonMap) {
+      //     // --------------------------------------------------这里
+      //     // mapArr.push('world')
+      //     if (that.mapArr.indexOf(params.name) > -1) {
+      //       // that.mapArr.pop();
+      //       this.value = that.mapArr[that.mapArr.length - 1];
+      //       console.log("进入610");
+      //       this.myChart.setOption(option, true);
+      //     } else {
+      //       that.mapArr.push(params.name);
+      //       this.value = params.name;
+      //       console.log("进入615");
+      //       this.myChart.setOption(option, true);
+      //     }
+      //     // console.log("可以")
+      //   } else {
+      //     // that.mapArr.pop()
+      //     this.value = that.mapArr[that.mapArr.length - 2];
+      //     console.log("进入622");
+      //     this.myChart.setOption(option, true);
+      //     // console.log("不可以")
+      //   }
+      // });
     },
+    back(){
+
+    }
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="less" scoped>
 .MapDiv {
   position: relative;
   width: 100%;
@@ -638,9 +676,17 @@ export default {
   left: 20px;
   top: 20px;
 }
+.el-button {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
 #map {
   position: absolute;
-  width: 100%;
+  // height: calc(100vh - 40px);;
   height: 100%;
+  width: 100%;
 }
 </style>
+
+
