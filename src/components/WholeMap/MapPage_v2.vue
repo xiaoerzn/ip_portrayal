@@ -620,7 +620,7 @@ export default {
     this.bindChartClickEvent(this.myChart);
     },
     bindChartClickEvent(myChart) {
-      var that = this;
+      let that = this;
       // console.log(myChart)
       myChart.on("click", function(params) {
         // console.log(params)
@@ -647,38 +647,20 @@ export default {
         }
       });
     },
-
-    // this.myChart.on("click", (params) => {
-    //   // 点击函数
-    //   var that = this;
-    //   // console.log(params.name)
-    //   //  var mapArr =new Array()
-    //   console.log(that.mapArr);
-    //   if (params.name in that.jsonMap) {
-    //     // --------------------------------------------------这里
-    //     // mapArr.push('world')
-    //     if (that.mapArr.indexOf(params.name) > -1) {
-    //       // that.mapArr.pop();
-    //       this.value = that.mapArr[that.mapArr.length - 1];
-    //       console.log("进入610");
-    //       this.myChart.setOption(option, true);
-    //     } else {
-    //       that.mapArr.push(params.name);
-    //       this.value = params.name;
-    //       console.log("进入615");
-    //       this.myChart.setOption(option, true);
-    //     }
-    //     // console.log("可以")
-    //   } else {
-    //     // that.mapArr.pop()
-    //     this.value = that.mapArr[that.mapArr.length - 2];
-    //     console.log("进入622");
-    //     this.myChart.setOption(option, true);
-    //     // console.log("不可以")
-    //   }
-    // });
+  back() {
+    let that = this;
+    if(that.mapArr.length==1){
+                that.$message({
+            message: "已是最高一级",
+            type: "warning",
+          });
+    }
+    that.mapArr.pop()
+    that.value = that.mapArr[that.mapArr.length-1]
+    that.myChart.setOption(that.option, true);
   },
-  back() {},
+  },
+
 };
 </script>
 
