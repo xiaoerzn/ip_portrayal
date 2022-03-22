@@ -58,7 +58,7 @@ export default {
       // 全球数据
       worldData: [
         { name: "美国", gold: 46, silver: 29, copper: 29, value: 104 },
-        { name: "中国", gold: 38, silver: 27, copper: 23, value: 88 },
+        { name: "中国", gold: 38, silver: 27, copper: 23, value: 188 },
         { name: "英国", gold: 29, silver: 17, copper: 19, value: 65 },
         { name: "俄罗斯", gold: 24, silver: 25, copper: 33, value: 82 },
         { name: "韩国", gold: 13, silver: 8, copper: 7, value: 28 },
@@ -529,6 +529,9 @@ export default {
       ],
       option: {
         // 进行相关配置
+      // animationDuration: 50000,
+      // animationEasing: 'cubicInOut',
+        animation: true,
         backgroundColor: "#0c184d",
         tooltip: {}, // 鼠标移到图里面的浮动提示框
         visualMap: {
@@ -553,26 +556,21 @@ export default {
         series: [
           {
             type: "map",
-            map: '', //下拉框选择的值传过来的
+            map: "", //下拉框选择的值传过来的
             //给visualMap提供值
-            data:'',
-            nameMap:'' //自定义地区名称映射，地图对应的名字
+            data: "",
+            nameMap: "", //自定义地区名称映射，地图对应的名字
           },
         ],
       },
     };
   },
   created() {
-    //   循环注册地图
     this.registerMap();
-
   },
   mounted() {
     //    初始化地图
-    //  console.log(this.option.series[0])
     this.draw(this.value);
-    // console.log(this)
-
   },
   //   更新数据
   watch: {
@@ -589,6 +587,7 @@ export default {
     this.myChart = null;
   },
   methods: {
+    //   循环注册地图
     registerMap() {
       for (let index in this.jsonMap) {
         this.$echarts.registerMap(index, this.jsonMap[index]);
@@ -597,38 +596,38 @@ export default {
 
     draw(value) {
       this.myChart = this.$echarts.init(document.getElementById("map")); //这里是为了获得容器所在位置
+      window.onresize = this.myChart.resize;
       // window.onresize = this.myChart.resize;
-    this.option.series[0].map=value
-    this.option.series[0].data=value == "world"
-                ? this.worldData
-                : value == "中国"
-                ? this.chinaData
-                : value == "重庆"
-                ? this.chongqingData
-                : value == "北京"
-                ? this.beijingData
-                : value == "上海"
-                ? this.shanghaiData
-                : value == "天津"
-                ? this.tianjinData
-                : value == "江北区"
-                ? this.jiangbeiData
-                : []
-    this.option.series[0].nameMap=value == "world" ? this.nameMap : {},
-    // console.log(this.option)
-    this.myChart.setOption(this.option, true);
-    this.bindChartClickEvent(this.myChart);
+      this.option.series[0].map = value;
+      this.option.series[0].data =
+        value == "world"
+          ? this.worldData
+          : value == "中国"
+          ? this.chinaData
+          : value == "重庆"
+          ? this.chongqingData
+          : value == "北京"
+          ? this.beijingData
+          : value == "上海"
+          ? this.shanghaiData
+          : value == "天津"
+          ? this.tianjinData
+          : value == "江北区"
+          ? this.jiangbeiData
+          : [];
+      (this.option.series[0].nameMap = value == "world" ? this.nameMap : {}),
+        // console.log(this.option)
+        this.myChart.clear();
+        this.myChart.setOption(this.option, true);
+      this.bindChartClickEvent(this.myChart);
     },
+
+    // 点击事件
     bindChartClickEvent(myChart) {
       let that = this;
-      // console.log(myChart)
-      myChart.on("click", function(params) {
-        // console.log(params)
-        // console.log(that.jsonMap)
-        // 点击函数
+      myChart.on("click", function (params) {
         if (params.name in that.jsonMap) {
           that.mapArr.push(params.name);
-          // console.log(that.mapArr)
           if (that.mapArr.length == 3) {
             that.$message({
               message: "已是最后一级",
@@ -636,10 +635,9 @@ export default {
             });
           }
           that.value = params.name;
-          myChart.setOption(that.option, true);
-          // console.log("可以")
-        } 
-        else {
+          // myChart.clear();
+          // myChart.setOption(that.option);
+        } else {
           that.$message({
             message: "暂无此地图数据",
             type: "warning",
@@ -647,20 +645,22 @@ export default {
         }
       });
     },
-  back() {
-    let that = this;
-    if(that.mapArr.length==1){
-                that.$message({
-            message: "已是最高一级",
-            type: "warning",
-          });
-    }
-    that.mapArr.pop()
-    that.value = that.mapArr[that.mapArr.length-1]
-    that.myChart.setOption(that.option, true);
-  },
-  },
 
+    // 返回上一级
+    back() {
+      let that = this;
+      if (that.mapArr.length == 1) {
+        that.$message({
+          message: "已是最高一级",
+          type: "warning",
+        });
+      }
+      that.mapArr.pop();
+      that.value = that.mapArr[that.mapArr.length - 1];
+      // that.myChart.clear();
+      // that.myChart.setOption(that.option);
+    },
+  },
 };
 </script>
 
