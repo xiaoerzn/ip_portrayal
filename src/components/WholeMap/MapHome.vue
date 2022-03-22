@@ -6,7 +6,8 @@
 </template>
 
 <script>
-import MapPage from "./MapPage.vue";
+import MapPage from "./MapPage_v2.vue";
+// import MapPage from "./MapPage.vue";
 export default {
   components: {
     MapPage,

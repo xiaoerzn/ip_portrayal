@@ -35,6 +35,7 @@ export default {
   name: "HelloWorld",
   data() {
     return {
+      /** @type EChartsOption */
       value: "world",
       mapArr: ["world"],
       myChart: null,
@@ -526,37 +527,7 @@ export default {
         { name: "重庆", value: 60 },
         { name: "江北区", value: 70 },
       ],
-    };
-  },
-  created() {
-    //   循环注册地图
-    for (let index in this.jsonMap) {
-      this.$echarts.registerMap(index, this.jsonMap[index]);
-    }
-  },
-  mounted() {
-    //    初始化地图
-    this.chinaConfigure(this.value);
-  },
-  //   更新数据
-  watch: {
-    value(newVal) {
-      this.myChart.dispose();
-      this.chinaConfigure(this.value);
-    },
-  },
-  beforeDestroy() {
-    if (!this.myChart) {
-      return;
-    }
-    this.myChart.dispose();
-    this.myChart = null;
-  },
-  methods: {
-    chinaConfigure(area) {
-      this.myChart = this.$echarts.init(document.getElementById("map")); //这里是为了获得容器所在位置
-      // window.onresize = this.myChart.resize;
-      let option = {
+      option: {
         // 进行相关配置
         backgroundColor: "#0c184d",
         tooltip: {}, // 鼠标移到图里面的浮动提示框
@@ -582,87 +553,132 @@ export default {
         series: [
           {
             type: "map",
-            map: area, //下拉框选择的值传过来的
+            map: '', //下拉框选择的值传过来的
             //给visualMap提供值
-            data:
-              area == "world"
-                ? this.worldData
-                : area == "中国"
-                ? this.chinaData
-                : area == "重庆"
-                ? this.chongqingData
-                : area == "北京"
-                ? this.beijingData
-                : area == "上海"
-                ? this.shanghaiData
-                : area == "天津"
-                ? this.tianjinData
-                : area == "江北区"
-                ? this.jiangbeiData
-                : [],
-            nameMap: area == "world" ? this.nameMap : {}, //自定义地区名称映射，地图对应的名字
+            data:'',
+            nameMap:'' //自定义地区名称映射，地图对应的名字
           },
         ],
-      };
-      this.myChart.setOption(option, true);
-      this.myChart.on("click", (params) => {
-        // 点击函数
-        var that = this;
+      },
+    };
+  },
+  created() {
+    //   循环注册地图
+    this.registerMap();
+
+  },
+  mounted() {
+    //    初始化地图
+    //  console.log(this.option.series[0])
+    this.draw(this.value);
+    // console.log(this)
+
+  },
+  //   更新数据
+  watch: {
+    value(newVal) {
+      this.myChart.dispose();
+      this.draw(this.value);
+    },
+  },
+  beforeDestroy() {
+    if (!this.myChart) {
+      return;
+    }
+    this.myChart.dispose();
+    this.myChart = null;
+  },
+  methods: {
+    registerMap() {
+      for (let index in this.jsonMap) {
+        this.$echarts.registerMap(index, this.jsonMap[index]);
+      }
+    },
+
+    draw(value) {
+      this.myChart = this.$echarts.init(document.getElementById("map")); //这里是为了获得容器所在位置
+      // window.onresize = this.myChart.resize;
+    this.option.series[0].map=value
+    this.option.series[0].data=value == "world"
+                ? this.worldData
+                : value == "中国"
+                ? this.chinaData
+                : value == "重庆"
+                ? this.chongqingData
+                : value == "北京"
+                ? this.beijingData
+                : value == "上海"
+                ? this.shanghaiData
+                : value == "天津"
+                ? this.tianjinData
+                : value == "江北区"
+                ? this.jiangbeiData
+                : []
+    this.option.series[0].nameMap=value == "world" ? this.nameMap : {},
+    // console.log(this.option)
+    this.myChart.setOption(this.option, true);
+    this.bindChartClickEvent(this.myChart);
+    },
+    bindChartClickEvent(myChart) {
+      var that = this;
+      // console.log(myChart)
+      myChart.on("click", function(params) {
         // console.log(params)
         // console.log(that.jsonMap)
+        // 点击函数
         if (params.name in that.jsonMap) {
           that.mapArr.push(params.name);
           // console.log(that.mapArr)
           if (that.mapArr.length == 3) {
-            this.$message({
+            that.$message({
               message: "已是最后一级",
               type: "warning",
             });
           }
-            this.value = params.name;
-            this.myChart.setOption(option, true);
+          that.value = params.name;
+          myChart.setOption(that.option, true);
           // console.log("可以")
-        } else {
-          this.$message({
+        } 
+        else {
+          that.$message({
             message: "暂无此地图数据",
             type: "warning",
           });
         }
       });
-      // this.myChart.on("click", (params) => {
-      //   // 点击函数
-      //   var that = this;
-      //   // console.log(params.name)
-      //   //  var mapArr =new Array()
-      //   console.log(that.mapArr);
-      //   if (params.name in that.jsonMap) {
-      //     // --------------------------------------------------这里
-      //     // mapArr.push('world')
-      //     if (that.mapArr.indexOf(params.name) > -1) {
-      //       // that.mapArr.pop();
-      //       this.value = that.mapArr[that.mapArr.length - 1];
-      //       console.log("进入610");
-      //       this.myChart.setOption(option, true);
-      //     } else {
-      //       that.mapArr.push(params.name);
-      //       this.value = params.name;
-      //       console.log("进入615");
-      //       this.myChart.setOption(option, true);
-      //     }
-      //     // console.log("可以")
-      //   } else {
-      //     // that.mapArr.pop()
-      //     this.value = that.mapArr[that.mapArr.length - 2];
-      //     console.log("进入622");
-      //     this.myChart.setOption(option, true);
-      //     // console.log("不可以")
-      //   }
-      // });
     },
-    back(){
 
-    }
+    // this.myChart.on("click", (params) => {
+    //   // 点击函数
+    //   var that = this;
+    //   // console.log(params.name)
+    //   //  var mapArr =new Array()
+    //   console.log(that.mapArr);
+    //   if (params.name in that.jsonMap) {
+    //     // --------------------------------------------------这里
+    //     // mapArr.push('world')
+    //     if (that.mapArr.indexOf(params.name) > -1) {
+    //       // that.mapArr.pop();
+    //       this.value = that.mapArr[that.mapArr.length - 1];
+    //       console.log("进入610");
+    //       this.myChart.setOption(option, true);
+    //     } else {
+    //       that.mapArr.push(params.name);
+    //       this.value = params.name;
+    //       console.log("进入615");
+    //       this.myChart.setOption(option, true);
+    //     }
+    //     // console.log("可以")
+    //   } else {
+    //     // that.mapArr.pop()
+    //     this.value = that.mapArr[that.mapArr.length - 2];
+    //     console.log("进入622");
+    //     this.myChart.setOption(option, true);
+    //     // console.log("不可以")
+    //   }
+    // });
   },
+  back() {},
 };
 </script>
 
