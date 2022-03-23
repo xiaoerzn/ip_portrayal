@@ -35,7 +35,6 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      /** @type EChartsOption */
       value: "world",
       mapArr: ["world"],
       myChart: null,
@@ -527,12 +526,13 @@ export default {
         { name: "重庆", value: 60 },
         { name: "江北区", value: 70 },
       ],
+      /** @type EChartsOption */
       option: {
         // 进行相关配置
-      // animationDuration: 50000,
-      // animationEasing: 'cubicInOut',
+        // animationDuration: 50000,
+        // animationEasing: 'cubicInOut',
         animation: true,
-        backgroundColor: "#0c184d",
+        backgroundColor: "#044161",
         tooltip: {}, // 鼠标移到图里面的浮动提示框
         visualMap: {
           // max: 110,
@@ -557,9 +557,17 @@ export default {
           {
             type: "map",
             map: "", //下拉框选择的值传过来的
-            //给visualMap提供值
             data: "",
             nameMap: "", //自定义地区名称映射，地图对应的名字
+            itemStyle: {
+              areaColor: "#004981",
+              borderColor: "#029fd4",
+            },
+          },
+          {
+            type: "scatter",
+            coordinateSystem: "geo",
+            data: [{}],
           },
         ],
       },
@@ -618,7 +626,7 @@ export default {
       (this.option.series[0].nameMap = value == "world" ? this.nameMap : {}),
         // console.log(this.option)
         this.myChart.clear();
-        this.myChart.setOption(this.option, true);
+      this.myChart.setOption(this.option, true);
       this.bindChartClickEvent(this.myChart);
     },
 
