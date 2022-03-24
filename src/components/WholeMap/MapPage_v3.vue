@@ -1,7 +1,12 @@
-使用Markpoint标记点。series为map
-
 <template>
+  <!-- <div class="MapDiv">
+    <div id="map"></div>
+        <el-select v-model="value" placeholder="请选择">
+      <el-option v-for="(items,index) in mapData" :key="index" :label="items.name" :value="items.name"></el-option>
+    </el-select>
+  </div> -->
   <div class="MapDiv">
+
     <div id="map"></div>
     <!-- 需要把这些写到map下面，absolute的时候才能在map上面 -->
     <el-select v-model="value" placeholder="请选择">
@@ -525,11 +530,12 @@ export default {
       option: {
         geo: {
           show: true,
-          map: "world",
+          id:"geomap",
+          map: "",
+          nameMap: "",
         },
         roam: true,
         animation: true,
-        backgroundColor: "#d1d1d1",
         tooltip: {}, // 鼠标移到图里面的浮动提示框
         visualMap: {
           // max: 110,
@@ -556,6 +562,7 @@ export default {
             map: "", //下拉框选择的值传过来的
             data: "",
             nameMap: "", //自定义地区名称映射，地图对应的名字
+            geoIndex: "geomap",
             itemStyle: {
               areaColor: "#004981",
               borderColor: "#029fd4",
@@ -563,14 +570,24 @@ export default {
             label: {
               show: false,
             },
-            markPoint: {
-              symbol: 'effectScatter' ,
-              symbolSize: 15, // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
-              itemStyle: {
-                color: "#23ad12fa",
-              },
-              data: [{ name: "中国北京", coord: [116.396013, 39.909992] }],
+          },
+          {
+            type: "effectScatter",
+            coordinateSystem: "geo",
+            symbolSize: 30,
+            itemStyle: {
+              color: "rgba(102, 224, 224, 1)",
             },
+            data: [
+              {
+                name: "北京", // 数据项名称，在这里指地区名称
+                value: [
+                  // 数据项值
+                  116.46, // 地理坐标，经度
+                  39.92, // 地理坐标，纬度
+                ],
+              },
+            ],
           },
         ],
       },
@@ -608,7 +625,7 @@ export default {
     draw(value) {
       this.myChart = this.$echarts.init(document.getElementById("map")); //这里是为了获得容器所在位置
       window.onresize = this.myChart.resize;
-      // window.onresize = this.myChart.resize;
+      this.option.geo.map = value;
       this.option.series[0].map = value;
       this.option.series[0].data =
         value == "world"
@@ -627,7 +644,7 @@ export default {
           ? this.jiangbeiData
           : [];
       (this.option.series[0].nameMap = value == "world" ? this.nameMap : {}),
-        // console.log(this.option)
+        //   // console.log(this.option)
         this.myChart.clear();
       this.myChart.setOption(this.option, true);
       this.bindChartClickEvent(this.myChart);
