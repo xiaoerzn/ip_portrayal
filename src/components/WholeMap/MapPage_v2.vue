@@ -528,9 +528,6 @@ export default {
       ],
       /** @type EChartsOption */
       option: {
-        // 进行相关配置
-        // animationDuration: 50000,
-        // animationEasing: 'cubicInOut',
         animation: true,
         backgroundColor: "#044161",
         tooltip: {}, // 鼠标移到图里面的浮动提示框
@@ -553,6 +550,14 @@ export default {
             ],
           },
         },
+        geo: {
+          map: "world",
+          label: {
+            emphasis: {
+              show: false,
+            },
+          },
+        },
         series: [
           {
             type: "map",
@@ -567,7 +572,7 @@ export default {
           {
             type: "scatter",
             coordinateSystem: "geo",
-            data: [{}],
+            data: [{ name: "北京", value: [116.396013, 39.909992] }],
           },
         ],
       },
