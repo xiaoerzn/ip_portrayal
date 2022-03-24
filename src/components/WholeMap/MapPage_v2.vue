@@ -528,6 +528,7 @@ export default {
       ],
       /** @type EChartsOption */
       option: {
+        roam: true,
         animation: true,
         backgroundColor: "#044161",
         tooltip: {}, // 鼠标移到图里面的浮动提示框
@@ -550,14 +551,6 @@ export default {
             ],
           },
         },
-        geo: {
-          map: "world",
-          label: {
-            emphasis: {
-              show: false,
-            },
-          },
-        },
         series: [
           {
             type: "map",
@@ -568,11 +561,16 @@ export default {
               areaColor: "#004981",
               borderColor: "#029fd4",
             },
-          },
-          {
-            type: "scatter",
-            coordinateSystem: "geo",
-            data: [{ name: "北京", value: [116.396013, 39.909992] }],
+            label: {
+              show: true,
+            },
+            markPoint: {
+              symbolSize: 15, // 标注大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
+              itemStyle: {
+                color: "#23ad12fa",
+              },
+              data: [{ name: "中国北京", coord: [116.396013, 39.909992] }],
+            },
           },
         ],
       },
