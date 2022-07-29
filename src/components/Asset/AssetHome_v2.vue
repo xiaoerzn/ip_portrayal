@@ -13,7 +13,6 @@
     @getFaterList="getAssetList()"
   >
     <!-- left  排名-->
-    
     <template v-slot:aside>
       <rank
         :category="'网关'"
@@ -220,7 +219,9 @@ export default {
         this.total = res.datanum;
         this.query_time = res.Query_time;
         this.resultflag = true;
-        document.querySelector(".body").parentNode.scrollTop = 0;
+        console.log(document.querySelector(".body").parentNode,document.querySelector(".body").parentNode.scrollTop)
+        // document.querySelector(".body").parentNode.scrollTop = 0;
+        
         this.loading = false;
       } else {
         this.total = 0;

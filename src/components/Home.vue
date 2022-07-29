@@ -3,8 +3,8 @@
     <!-- 头部区域 -->
     <el-header>
       <div @click="gobackhome()">
-        <img src="../assets/logo.png" alt="" />
-        <span>CL</span>
+        <!-- <img src="../assets/logo.png" alt="" /> -->
+        <span>网络空间画像系统</span>
       </div>
       <el-button type="info" @click="logout">退出</el-button>
     </el-header>
