@@ -27,7 +27,7 @@ const router = new Router({
       title: "用户登录",
     },
   }, {
-    path: "/dark1",
+    path: "/topology1",
     component: MapHome,
     meta: {
       title: "地图",
