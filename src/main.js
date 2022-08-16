@@ -43,6 +43,9 @@ Vue.use(BaiduMap, {
   ak: "HcOsUXOCYNGGuuayQnGXK7EG38pEglSA",
 });
 
+// ---------------------------------------------引入Mock
+require("./mock/mock")
+
 // ------------------------------------------------------时间配置----------------------------
 Date.prototype.Format = function (fmt) {
   var o = {
