@@ -170,12 +170,8 @@ export default {
 .el-main {
   max-width: 100%;
   padding-bottom: 10px;
-  // padding: 0 !important;
-  // margin-bottom:10px ;
   height: calc(100vh - 55px);
-  // top: 155px;
   background-color: #eaedf1;
-  // min-width:1725px
   padding: 0;
 }
 

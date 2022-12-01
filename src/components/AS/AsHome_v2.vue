@@ -66,19 +66,19 @@ export default {
         eachpage: 10,
         pagenum: 1,
       },
-      loading: true,
-      ASlist: [],
+      loading: false,
+      ASlist: ['1'],
       resultflag: true,
     };
     
   },
-    created () {
-    this.getASList()
-    // console.log(document.querySelector(".body").scrollTop)
-  },
+  //   created () {
+  //   this.getASList()
+  //   // console.log(document.querySelector(".body").scrollTop)
+  // },
   methods:{
           async getASList () {
-      this.loading = true
+      this.loading = false
       const { data: res } = await this.$http.get('as_info_search', {
         params: this.queryInfo
       })
