@@ -571,7 +571,7 @@ export default {
               show: false,
             },
           },
-          {
+          { //点
             type: "effectScatter",
             coordinateSystem: "geo",
             symbolSize: 30,

@@ -62,7 +62,7 @@ export default {
       }
     },
     change (data) {
-      this.rankrequest.top_number = data
+      this.rankrequest.top_number = data//参数有类型和数量
       this.rankloading = true
       this.getRankList()
     }
