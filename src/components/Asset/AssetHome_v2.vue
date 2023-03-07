@@ -188,8 +188,8 @@ export default {
         eachpage: 10,
         pagenum: 1,
       },
-      loading: true,
-      AssetList: [],
+      loading: false,
+      AssetList: ['1'],
       resultflag: true,
     };
   },
@@ -205,7 +205,7 @@ export default {
   },
   methods: {
     async getAssetList() {
-      this.loading = true;
+      this.loading = false;
       const { data: res } = await this.$http.get("/ip/page", {
         params: this.queryInfo,
       });

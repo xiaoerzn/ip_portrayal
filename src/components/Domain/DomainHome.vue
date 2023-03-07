@@ -104,7 +104,7 @@ export default {
         eachpage: 10,
         pagenum: 1
       },
-      loading: true,
+      loading: false,
       Test: 'test',
       Domainlist: [
         //   {
