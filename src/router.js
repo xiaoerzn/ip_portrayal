@@ -1,4 +1,5 @@
-// 测试hhh
+// 测试base
+
 
 import Vue from "vue";
 import Router from "vue-router";
