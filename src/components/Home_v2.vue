@@ -188,28 +188,14 @@ export default {
         }
     },
     created() {
-        this.getMenuList()
-        // this.activePath = window.sessionStorage.getItem('activePath')
         this.activePath = this.$route.path
-        // console.log(this.$route.path);
-        // console.log(this.activePath);
-        // console.log(window.sessionStorage)
     },
-    // mounted(){
-    //   console.log(this.$refs)
-    // },
+
     methods: {
         logout() {
             // window.localStorage.clear()
             window.localStorage.removeItem('token')
             this.$router.push('/login')
-        },
-        // 获取所有的菜单
-        async getMenuList() {
-            const { data: res } = await this.$http.get('menu')
-            if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
-            this.menulist = res.data
-            // console.log(res)
         },
         // 点击按钮，切换菜单的折叠与展开
         toggleCollapse() {
