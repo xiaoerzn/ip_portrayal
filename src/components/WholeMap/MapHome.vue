@@ -1,6 +1,4 @@
 <template>
-
-
       <MapPage></MapPage>
 
 </template>

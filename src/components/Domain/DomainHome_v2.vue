@@ -1,3 +1,4 @@
+<!-- 用了公共组件-->
 <template>
   <search
     :loading="loading"
