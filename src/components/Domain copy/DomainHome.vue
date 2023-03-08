@@ -151,7 +151,7 @@ export default {
   },
   methods: {
     async getDomainList () {
-      this.loading = true
+      this.loading = false
       const { data: res } = await this.$http.get('/domain/page', {
         params: this.queryInfo
       })

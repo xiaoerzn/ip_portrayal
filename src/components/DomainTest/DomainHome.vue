@@ -45,7 +45,7 @@
           <div slot="header" class="clearfix">
             <el-row>
               <el-col :span="4" style="text-align: left; font-weight: bold">{{ item.ipnum }}</el-col>
-              <el-col :span="4" style="text-align: left"><el-button type="text" icon="el-icon-view" @click="view_details(item.ipnum)" size="mini">查看详情</el-button></el-col>
+              <el-col :span="4" style="text-align: left">&nbsp;<el-button type="text" icon="el-icon-view" @click="view_details(item.ipnum)" size="mini">查看详情</el-button></el-col>
               <el-col :span="6" style="text-align: left"> {{ item.country }}-{{ item.city }}&nbsp;&nbsp;<img :src="`http://10.15.1.192:8000/static/${item.country}.png`" /></el-col>
               <el-col :span="4"><i class="iconfont icondiqiu"></i>
                 &nbsp;<span v-if="item.ip_type == 0" style="color:red">IPv4</span>

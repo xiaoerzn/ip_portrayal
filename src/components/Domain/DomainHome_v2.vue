@@ -66,8 +66,41 @@ export default {
         eachpage: 10,
         pagenum: 1,
       },
-      loading: true,
-      Domainlist: [],
+      loading: false,
+      Domainlist: [
+          {
+            id: '1',
+            DomainName: 'www.sohu.com',
+            DisplayTime: '2021-08-18 20:45:55',
+            country: 'US',
+            region: ' California',
+            city: '洛杉矶',
+            registrationauthority: 'xxxxx',
+            organization: 'xxxx',
+            result: 'sd.werdgjddf.net.',
+          },
+          {
+            id: '2',
+            DomainName: 'www.sohu.com',
+            DisplayTime: '2021-08-18 20:45:55',
+            country: 'US',
+            region: ' California',
+            city: '洛杉矶',
+            registrationauthority: 'xxxxx',
+            organization: 'xxxx',
+            result: 'xxxx',
+          },
+          {
+            id: '3',
+            DomainName: 'www.sohu.com',
+            DisplayTime: '2021-08-18 20:45:55',
+            country: 'US',
+            region: ' California',
+            city: '洛杉矶',
+            registrationauthority: 'xxxxx',
+            organization: 'xxxx',
+            result: 'xxxx',
+          },],
       resultflag: true,
     };
   },
@@ -80,7 +113,7 @@ export default {
   },
   methods:{
       async getDomainList () {
-      this.loading = true
+      this.loading = false
       const { data: res } = await this.$http.get('/domain/page', {
         params: this.queryInfo
       })
